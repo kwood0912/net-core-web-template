@@ -2,7 +2,7 @@
 .NET Core web application template
 
 ## Initialization steps
-1. open a powershell terminal and navigate to the root of the repository and run:
+1. open a powershell terminal, navigate to the root of the repository, and run:
 ```
 PS > .\initialize.ps1
 ```
