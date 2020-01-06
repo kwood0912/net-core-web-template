@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace SolutionName.Data
+namespace SolutionName.Data.Common
 {
     public interface IDatabaseRepository<T> : IRepository
     {

@@ -11,4 +11,8 @@
     <PackageReference Include="MySql.Data" Version="8.0.18" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SolutionName.Models\SolutionName.Models.csproj" />
+  </ItemGroup>
+
 </Project>

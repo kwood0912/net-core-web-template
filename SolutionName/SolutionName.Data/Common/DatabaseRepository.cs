@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace SolutionName.Data
+namespace SolutionName.Data.Common
 {
     public class DatabaseRepository<T>
     {

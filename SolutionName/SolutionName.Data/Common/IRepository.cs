@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SolutionName.Data
+namespace SolutionName.Data.Common
 {
     public interface IRepository
     {
