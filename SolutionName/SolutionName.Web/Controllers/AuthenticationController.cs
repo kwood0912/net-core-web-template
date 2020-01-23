@@ -8,7 +8,7 @@ using Amazon.Extensions.CognitoAuthentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SolutionName.Web.Extensions;
+using SolutionName.Utilities.Extensions;
 using SolutionName.Web.Models;
 
 namespace SolutionName.Web.Controllers

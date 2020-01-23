@@ -1,0 +1,13 @@
+﻿@model IEnumerable<string>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Admin</h1>
+<div>
+    @foreach(var role in Model)
+    {
+        <span>@role, </span>
+    }
+</div>
+

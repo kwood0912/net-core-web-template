@@ -16,6 +16,13 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SolutionName.Data\SolutionName.Data.csproj" />
+    <ProjectReference Include="..\SolutionName.Models\SolutionName.Models.csproj" />
+    <ProjectReference Include="..\SolutionName.Services\SolutionName.Services.csproj" />
+    <ProjectReference Include="..\SolutionName.Utilities\SolutionName.Utilities.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

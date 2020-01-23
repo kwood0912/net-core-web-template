@@ -97,6 +97,10 @@ namespace SolutionName.Web.Controllers
             return result;
         }
 
-
+        [HttpGet("accessdenied")]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
