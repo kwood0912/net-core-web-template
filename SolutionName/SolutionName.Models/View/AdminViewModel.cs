@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SolutionName.Web.Models
+namespace SolutionName.Models.View
 {
     public class AdminViewModel
     {

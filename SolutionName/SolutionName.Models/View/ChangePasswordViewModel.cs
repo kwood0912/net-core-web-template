@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SolutionName.Web.Models
+namespace SolutionName.Models.View
 {
     public class ChangePasswordViewModel
     {

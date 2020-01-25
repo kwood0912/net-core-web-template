@@ -5,12 +5,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SolutionName.Web.Models
+namespace SolutionName.Models.View
 {
-    public class AccountConfirmViewModel
+    public class ForgotPasswordViewModel
     {
         [Required]
-        [DisplayName("Confirmation Code")]
-        public string ConfirmationCode { get; set; }
+        [EmailAddress]
+        [DisplayName("E-mail Address")]
+        public string Email { get; set; }
     }
 }

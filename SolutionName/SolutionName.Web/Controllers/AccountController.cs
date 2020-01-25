@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SolutionName.Utilities.Extensions;
-using SolutionName.Web.Models;
+using SolutionName.Models.View;
 
 namespace SolutionName.Web.Controllers
 {
