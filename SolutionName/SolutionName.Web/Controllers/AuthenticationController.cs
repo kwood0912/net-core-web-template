@@ -100,7 +100,7 @@ namespace SolutionName.Web.Controllers
                     var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
                     if (changePasswordResult.Succeeded)
                     {
-                        TempData.Put("Dialog", new DialogViewModel(DialogType.Success, "Password changed", "Your password has been changed successfully!"));
+                        TempData.Put("Dialog", new AlertViewModel(AlertType.Success, "Password changed", "Your password has been changed successfully!"));
                         result = RedirectToAction(nameof(ChangePassword));
                     }
                     else
@@ -135,16 +135,16 @@ namespace SolutionName.Web.Controllers
                     {
                         await user.ForgotPasswordAsync();
                         result = RedirectToAction(nameof(ResetPassword));
-                        TempData.Put("Dialog", new DialogViewModel(DialogType.Success, "Password recovery sent", "A password recovery message was successfully sent to your e-mail inbox."));
+                        TempData.Put("Dialog", new AlertViewModel(AlertType.Success, "Password recovery sent", "A password recovery message was successfully sent to your e-mail inbox."));
                     }
                     catch (Exception)
                     {
-                        TempData.Put("Dialog", new DialogViewModel(DialogType.Error, "Password recovery failed", "We were unable to generate a password recovery token for your account.  Please try again."));
+                        TempData.Put("Dialog", new AlertViewModel(AlertType.Error, "Password recovery failed", "We were unable to generate a password recovery token for your account.  Please try again."));
                     }
                 }
                 else
                 {
-                    TempData.Put("Dialog", new DialogViewModel(DialogType.Error, "Unable to retrieve user", "We were unable to find an account with the e-mail provided.  Please try again."));
+                    TempData.Put("Dialog", new AlertViewModel(AlertType.Error, "Unable to retrieve user", "We were unable to find an account with the e-mail provided.  Please try again."));
                 }
             }
             return result;
@@ -178,15 +178,21 @@ namespace SolutionName.Web.Controllers
                     {
                         await user.ConfirmForgotPasswordAsync(model.ResetToken, model.NewPassword);
                         result = RedirectToAction(nameof(Login));
-                        TempData.Put("Dialog", new DialogViewModel(DialogType.Success, "Password reset", "Your password has been successfully reset."));
+                        TempData.Put("Dialog", new AlertViewModel(AlertType.Success, "Password reset", "Your password has been successfully reset."));
                     }
                     catch (Exception ex)
                     {
-                        TempData.Put("Dialog", new DialogViewModel(DialogType.Error, "Password recovery failed", ex.Message));
+                        TempData.Put("Dialog", new AlertViewModel(AlertType.Error, "Password recovery failed", ex.Message));
                     }
                 }
             }
             return result;
+        }
+
+        [HttpGet("access-denied")]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

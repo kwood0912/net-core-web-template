@@ -7,9 +7,9 @@ using System.Text;
 
 namespace SolutionName.Data.Repositories
 {
-    public class UserDatabaseRepository : DatabaseRepository<User>, IUserDatabaseRepository
+    public class LogDatabaseRepository : DatabaseRepository<Log>, ILogDatabaseRepository
     {
-        public UserDatabaseRepository(IConfiguration configuration) : base(configuration)
+        public LogDatabaseRepository(IConfiguration configuration) : base(configuration)
         {
         }
     }

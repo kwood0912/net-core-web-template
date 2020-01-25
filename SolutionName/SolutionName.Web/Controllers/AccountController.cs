@@ -5,8 +5,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Amazon.AspNetCore.Identity.Cognito;
 using Amazon.Extensions.CognitoAuthentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SolutionName.Utilities.Extensions;
 using SolutionName.Web.Models;
 
 namespace SolutionName.Web.Controllers
@@ -28,6 +30,20 @@ namespace SolutionName.Web.Controllers
             _userManager = userManager as CognitoUserManager<CognitoUser>;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(object profile)
+        {
+            var user = await _userManager.FindByEmailAsync(User.GetEmail());
+            
+            return View();
+        }
+
         [HttpGet("create")]
         public IActionResult Create()
         {
@@ -35,7 +51,7 @@ namespace SolutionName.Web.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Create(RegisterViewModel model)
+        public async Task<IActionResult> Create([FromForm] RegisterViewModel model)
         {
             IActionResult result = View();
             if (ModelState.IsValid)
@@ -71,12 +87,12 @@ namespace SolutionName.Web.Controllers
         }
 
         [HttpPost("confirm")]
-        public async Task<IActionResult> Confirm(AccountConfirmViewModel model)
+        public async Task<IActionResult> Confirm([FromForm] AccountConfirmViewModel model)
         {
             IActionResult result = View(model);
             if (ModelState.IsValid)
             {
-                var email = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value;
+                var email = User.GetEmail();
                 var user = await _userManager.FindByEmailAsync(email);
                 if (user != null)
                 {
@@ -95,12 +111,6 @@ namespace SolutionName.Web.Controllers
                 }
             }
             return result;
-        }
-
-        [HttpGet("accessdenied")]
-        public IActionResult AccessDenied()
-        {
-            return View();
         }
     }
 }

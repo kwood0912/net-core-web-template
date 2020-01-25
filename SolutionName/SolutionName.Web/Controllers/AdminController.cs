@@ -5,6 +5,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SolutionName.Utilities.Extensions;
+using SolutionName.Web.Models;
 
 namespace SolutionName.Web.Controllers
 {
@@ -14,8 +16,13 @@ namespace SolutionName.Web.Controllers
     {
         public IActionResult Index()
         {
-            var roles = User.FindAll(ClaimTypes.Role).Select(c => c.Value);
-            return View(roles);
+            var avm = new AdminViewModel()
+            {
+                Email = User.GetEmail(),
+                Roles = User.GetRoles(),
+                Name = User.GetName()
+            };
+            return View(avm);
         }
     }
 }

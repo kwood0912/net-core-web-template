@@ -7,6 +7,7 @@ namespace SolutionName.Models.Common
 {
     public class DatabaseModel : IModel
     {
+        [IgnoreInsert]
         [Column("last_modified_date")]
         public DateTime LastModifiedDate { get; set; }
 

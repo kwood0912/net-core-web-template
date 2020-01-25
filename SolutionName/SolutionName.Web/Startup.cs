@@ -1,3 +1,4 @@
+using SolutionName.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SolutionName.Services.Identity;
+using SolutionName.Services.Logging;
 
 namespace SolutionName.Web
 {
@@ -28,16 +31,26 @@ namespace SolutionName.Web
         {
             services.AddCognitoIdentity();
             services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllersWithViews();
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(15);
-
+                options.AccessDeniedPath = new PathString("/access-denied");
+                options.LogoutPath = new PathString("/logout");
                 options.LoginPath = new PathString("/login");
                 options.SlidingExpiration = true;
             });
+
+            //Register Repositories
+            services.AddScoped<ILogDatabaseRepository, LogDatabaseRepository>();
+            services.AddScoped<IUserDatabaseRepository, UserDatabaseRepository>();
+
+            //Register Services
+            services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<ILoggingService, LoggingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,12 +72,6 @@ namespace SolutionName.Web
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseMvc();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //});
         }
     }
 }

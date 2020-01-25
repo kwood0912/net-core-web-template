@@ -1,0 +1,23 @@
+﻿@{ 
+    var alertModel = TempData.Get<AlertViewModel>("Dialog");
+}
+
+@if (alertModel != null)
+{
+    string alertType = "alert-primary";
+    switch (alertModel.AlertType)
+    {
+        case AlertType.Success: alertType = "alert-success"; break;
+        case AlertType.Info: alertType = "alert-info"; break;
+        case AlertType.Warning: alertType = "alert-warning"; break;
+        case AlertType.Error: alertType = "alert-danger"; break;
+    }
+
+    <div class="alert @alertType alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">@alertModel.Title</h4>
+        <p>@alertModel.Message</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}

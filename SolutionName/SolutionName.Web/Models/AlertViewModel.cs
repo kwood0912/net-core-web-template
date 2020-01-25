@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 namespace SolutionName.Web.Models
 {
     [Serializable]
-    public class DialogViewModel
+    public class AlertViewModel
     {
-        public DialogViewModel() { }
-        public DialogViewModel(DialogType dialogType, string title, string message)
+        public AlertViewModel() { }
+        public AlertViewModel(AlertType alertType, string title, string message)
         {
             Title = title;
             Message = message;
-            DialogType = dialogType;
+            AlertType = alertType;
         }
         public string Title { get; set; }
         public string Message { get; set; }
-        public DialogType DialogType { get; set; }
+        public AlertType AlertType { get; set; }
     }
 
-    public enum DialogType
+    public enum AlertType
     {
         Info,
         Success,
