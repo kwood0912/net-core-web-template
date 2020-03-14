@@ -32,7 +32,7 @@ namespace SolutionName.Web
             services.AddCognitoIdentity();
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddMvc(options => options.EnableEndpointRouting = false)
-                    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+                    .SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddControllersWithViews();
             services.ConfigureApplicationCookie(options =>
             {
