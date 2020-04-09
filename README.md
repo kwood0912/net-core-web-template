@@ -1,5 +1,5 @@
 # net-core-web-template
-.NET Core 3.0 web application template with working examples of AWS Cognito Identity Provider utilities.
+.NET Core 3.1 web application template with working examples of AWS Cognito Identity Provider utilities.
 This project supports all the standard, self-service identity components you need to get a web application off the ground:
 * Login/Logout
 * Account Registration
@@ -20,7 +20,7 @@ PS > .\initialize.ps1
 
 4. open your solution by opening the .sln file with Visual Studio and build the solution
 
-**note:** you must install the .NET Core SDK 3.0 before building the solution - you can find that [here](https://dotnet.microsoft.com/download/dotnet-core/3.0)
+**note:** you must install the .NET Core SDK 3.1 before building the solution - you can find that [here](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
 ## Project Setup Steps
 1. the application is setup to use AWS Cognito Identity Provider.  To get this working you will need to create a Cognito User Pool in AWS and fill in the appropriate config values in the `appsettings.Development.json` file:
